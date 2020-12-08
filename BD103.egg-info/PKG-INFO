@@ -1,0 +1,95 @@
+Metadata-Version: 2.1
+Name: BD103
+Version: 0.1.3
+Summary: Assorted Developer Functions by BD103
+Home-page: https://bd103.repl.co/site/package/
+Author: BD103
+Author-email: dont@stalk.me
+License: UNKNOWN
+Description: # BD103's Personal Coding Package
+        A bunch of random developer related functions and modules that I use.
+        
+        ## Usage
+        `pip install bd103`
+        
+        Go to [bd103.repl.co](https://bd103.repl.co/package/) for the docs.
+        
+        ## Patch Notes
+        ### 0.1.3
+        _Hopefully_ fixed the `color.py` module.
+        
+        ### 0.1.2
+        Fixed link in `README.md`.
+        
+        ### 0.1.1
+        **Panik.** I keep on making these silly mistakes in the `color.py` module, but _thankfully_ it should be fixed now. The `print(text, color)` function is renamed to `cprint(text, color)`.
+        
+        ### **0.1.0**
+        Fixed the `paint(color)` function in `color.py` module, as it refered to the color print function, not base print.
+        
+        We are now in the Beta stage. Yay! :7
+        
+        ### 0.0.10
+        Small adjustment, made the delay between printing characters in the `scroll.py` module customizable. Also made a `clear.py` module, that clears the console screen.
+        
+        ### 0.0.9
+        Created the `scroll.py` module, as well as adjusted `__init__.py` to import functions from modules, not just the modules themselves.
+        
+        ### 0.0.8
+        As `0.0.7` failed to fix `engine/textdump.py`, we finally found and fixed the issue. :P
+        
+        ### 0.0.7
+        Fixed extra `"` in `engine/textdump.py`. Updated `0.0.6` description.
+        
+        ### 0.0.6
+        Edited 0.0.3 description of `README.md` to fix recurrent module creation. Created a comment at the top of each module that says it's part of the package. Removed color variables, as they are only handy for local modules. Fixed `engine/textdump.py` trying to save to a non-existant folder.
+        
+        ### 0.0.5
+        Edited `README.md` to fix spacing issues. Made the `engine` sub-module. Created `engine/textdump.py`.
+        
+        ### 0.0.4
+        Fixed `LICENSE`.
+        
+        ### 0.0.3
+        Updated short description. Added `__all__` variable in `__init__.py`. Updated `README.md` to have full module names. Renamed `color()` function to `print()`. Updated 0.0.1 description. Added `load.py` module. Created the `parser.py` module.
+        ```python
+        ''' Parser '''
+        bd103.parser.grid(path) # Loads a text file and creates a list. Each item is a sepperate line of the file. Returns the list (array)
+        bd103.parser.space(text, identifier=" ") # Parses given string and returns an array. Each item is sepperated by spaces. "hi there" would return ["hi", "there"]
+        ''' Load Bar '''
+        bd103.load.load(length=100) # Automatically makes a useless loading bar
+        bd103.load.loadbar(value, length=100) # Allows you to manually create a load bar that syncs with data.
+        ```
+        
+        ### 0.0.2
+        Emptied `__init__.py` to fix error. Updated `setup.py` and redid `README.md`.
+        
+        ### 0.0.1
+        Initial package. Contains a basic color formatting module.
+        ```python
+        ''' Functions '''
+        bd103.color.print(text, color) # Prints with text then resets formatting
+        bd103.color.paint(color) # Sets color permanently until reset
+        
+        ''' Colors '''
+        reset = "reset
+        red = "red"
+        yellow = "yellow"
+        green = "green"
+        cyan = "cyan"
+        blue = "blue"
+        magenta = "magenta"
+        black = "black"
+        white = "white"
+        ```
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3 :: Only
+Classifier: Topic :: Software Development
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
