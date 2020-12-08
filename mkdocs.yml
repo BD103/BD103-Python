@@ -8,6 +8,7 @@ docs_dir: src
 site_dir: docs
 nav:
     - Home: index.md
+    - Color: color.md
 theme:
     name: material
     palette:
@@ -18,6 +19,8 @@ theme:
 markdown_extensions:
     - pymdownx.highlight
     - pymdownx.superfences
+plugins:
+    - mkdocstrings
 extra:
     social:
       - icon: octicons/code-review-16
