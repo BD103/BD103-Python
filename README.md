@@ -4,7 +4,7 @@ A bunch of random developer related functions and modules that I use.
 ## Usage
 `pip install bd103`
 
-Go to [bd103.repl.co](https://bd103.repl.co/package/) for the docs.
+Go to [bd103.github.io](https://bd103.github.io/) for the docs.
 
 ## Patch Notes
 ### 0.1.3
