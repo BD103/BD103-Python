@@ -1,13 +1,22 @@
-echo "BD103 Personal Python Package"
-echo "By: BD103"
-echo
-echo "CMDS:"
-echo
-echo "pip install setuptools wheel twine"
-echo "Installs all necessary modules"
-echo
-echo "python3 setup.py sdist bdist_wheel"
-echo "Compiles package"
-echo
-echo "twine upload dist/*"
-echo "Uploads compiled package"
+echo BD103 Personal Package
+echo Enter CMD
+
+read cmd
+
+if [ $cmd == "build" ]; then
+  bash cmd/build.sh
+fi
+
+if [ $cmd == "rm" ]; then
+  bash cmd/rm.sh
+fi
+
+if [ $cmd == "pip" ]; then
+  bash cmd/pip.sh
+fi
+
+if [ $cmd == "deploy" ]; then
+  bash cmd/deploy.sh
+fi
+
+# Sorry for the bad syntax, I had issues developing this

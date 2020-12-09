@@ -7,6 +7,9 @@ A bunch of random developer related functions and modules that I use.
 Go to [bd103.github.io](https://bd103.github.io/) for the docs.
 
 ## Patch Notes
+### 0.1.4
+Fixed link. Main website is no longer being hosted on [repl.it](https://repl.it), it is now being hosted through Github Pages. Updated some other links, as well as put package in a repository. You can find it [here](https://github.com/BD103/Package).
+
 ### 0.1.3
 _Hopefully_ fixed the `color.py` module.
 

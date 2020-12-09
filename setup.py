@@ -5,13 +5,18 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="BD103",
-    version="0.1.3",
+    version="0.1.4",
     author="BD103",
     author_email="dont@stalk.me",
     description="Assorted Developer Functions by BD103",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://bd103.repl.co/site/package/",
+    url="https://bd103.github.io",
+    project_urls={
+      "Documentation": "https://github.com/BD103/Package/wiki",
+      "Repository": "https://github.com/BD103/Package",
+      "Issues": "https://github.com/BD103/Package/issues"
+    },
     packages=setuptools.find_packages(),
     classifiers=[
 				"Development Status :: 4 - Beta",
