@@ -4,9 +4,12 @@ A bunch of random developer related functions and modules that I use.
 ## Usage
 `pip install bd103`
 
-Go to [bd103.github.io](https://bd103.github.io/) for the docs.
+Go to [Github](https://github.com/BD103/Package/wiki) for the docs. :)
 
 ## Patch Notes
+### 0.1.5
+Fixed link in Usage section of `README.md`, as well as implemented some happiness.
+
 ### 0.1.4
 Fixed link. Main website is no longer being hosted on [repl.it](https://repl.it), it is now being hosted through Github Pages. Updated some other links, as well as put package in a repository. You can find it [here](https://github.com/BD103/Package).
 
