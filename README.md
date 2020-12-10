@@ -8,7 +8,7 @@ Go to [Github](https://github.com/BD103/Package/wiki) for the docs. :)
 
 ## Patch Notes
 ### 0.1.5
-Fixed link in Usage section of `README.md`, as well as implemented some happiness.
+Fixed link in Usage section of `README.md`, as well as implemented some happiness. Added `requirements.txt`. Implemented Black formatting. Created `griddy.py` module. Check docs for more. Adjusted `__init__.py`. Importing bd103 no longer imports the contents of other modules. Added `bd103.help()` command in `__init__.py`.
 
 ### 0.1.4
 Fixed link. Main website is no longer being hosted on [repl.it](https://repl.it), it is now being hosted through Github Pages. Updated some other links, as well as put package in a repository. You can find it [here](https://github.com/BD103/Package).

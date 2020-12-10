@@ -1,1 +1,1 @@
-pip install setuptools wheel twine
+pip install -r requirements.txt
