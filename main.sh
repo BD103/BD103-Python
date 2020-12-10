@@ -23,4 +23,6 @@ if [ $cmd == "test" ]; then
   python3 main.py
 fi
 
-# Sorry for the bad syntax, I had issues developing this
+if [ $cmd == "newtest" ]; then
+  bash cmd/newtest.sh
+fi
