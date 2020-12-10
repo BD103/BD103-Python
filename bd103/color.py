@@ -1,6 +1,7 @@
-'''
+"""
 Color Module for the BD103 Package
-'''
+"""
+
 
 def cprint(text, color):
     if color == "reset":
@@ -21,6 +22,7 @@ def cprint(text, color):
         print("\u001b[30m" + text + "\u001b[0m")
     elif color == "white":
         print("\u001b[37m" + text + "\u001b[0m")
+
 
 def paint(color):
     if color == "reset":
