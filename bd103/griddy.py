@@ -8,6 +8,7 @@ def runProgram(path):
   code = createCode(grid)
   root = Tk()
   exec(code)
+  root.mainloop()
 
 def parseCSV(path):
   f = open(path, "rt")

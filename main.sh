@@ -19,4 +19,8 @@ if [ $cmd == "deploy" ]; then
   bash cmd/deploy.sh
 fi
 
+if [ $cmd == "test" ]; then
+  python3 main.py
+fi
+
 # Sorry for the bad syntax, I had issues developing this
