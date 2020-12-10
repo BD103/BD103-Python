@@ -5,7 +5,12 @@ on: [push, pull_request]
 jobs:
   lint:
      runs-on: ubuntu-latest
+     strategy:
+       matrix:
+         python-version: [3.7]
+
      steps:
        - uses: actions/checkout@v2
        - uses: actions/setup-python@v2
-       - uses: psf/black@stable
+       - run: pip install black
+       - run: black bd103
