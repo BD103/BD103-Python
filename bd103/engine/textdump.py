@@ -1,6 +1,6 @@
 import os
 
-initpy = '''import json
+initpy = """import json
 
 functionformat = "def {funcname}():\\n"
 textformat = "\\tprint(\\"{text}\\")\\n\\tinput()\\n"
@@ -27,9 +27,9 @@ for i in textdump:
 	
 	f.write(function + text)
 
-f.close()'''
+f.close()"""
 
-textdumpjson = '''{
+textdumpjson = """{
   "key": [
     "Value 1",
     "Value 2"
@@ -38,11 +38,11 @@ textdumpjson = '''{
     "Text being printed",
     "Text being printed after pressing return"
   ]
-}'''
+}"""
 try:
-  os.mkdir("engine")
+    os.mkdir("engine")
 except:
-	pass
+    pass
 
 f = open("engine/__init__.py", "wt")
 f.write(initpy)

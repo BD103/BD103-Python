@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="BD103",
-    version="0.1.4",
+    version="0.1.5",
     author="BD103",
     author_email="dont@stalk.me",
     description="Assorted Developer Functions by BD103",
