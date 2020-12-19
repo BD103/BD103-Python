@@ -1,7 +1,10 @@
 import platform
+
 if platform.system() == "Windows":
     from colorama import init as colorinit
+
     colorinit()
+
 
 def help():
     print("\033[94m", end="")
