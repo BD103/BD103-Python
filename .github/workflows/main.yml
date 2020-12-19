@@ -1,10 +1,25 @@
 name: Lint
-
-on: [push, pull_request]
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0,12 * * *'
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - uses: psf/black@stable
+        with:
+          python-version: '3.8'
+      - name: Download packages
+        run: |
+          pip install -U pip
+          pip install -U black
+      - name: Code check
+        run: black . --check
