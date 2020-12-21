@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="BD103",
-    version="0.1.5",
+    version="0.1.6",
     author="BD103",
     author_email="dont@stalk.me",
     description="Assorted Developer Functions by BD103",
@@ -13,20 +13,20 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://bd103.github.io",
     project_urls={
-      "Documentation": "https://github.com/BD103/Package/wiki",
-      "Repository": "https://github.com/BD103/Package",
-      "Issues": "https://github.com/BD103/Package/issues"
+        "Documentation": "https://github.com/BD103/Package/wiki",
+        "Repository": "https://github.com/BD103/Package",
+        "Issues": "https://github.com/BD103/Package/issues",
     },
     packages=setuptools.find_packages(),
+    extras_requires={"windows": ["colorama"], "test": ["pytest", "pytest-cov"]},
     classifiers=[
-				"Development Status :: 4 - Beta",
-				"Intended Audience :: Developers",
-				"Natural Language :: English",
-        "Programming Language :: Python :: 3.8",
-				"Programming Language :: Python :: 3 :: Only",
-				"Topic :: Software Development",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
+        "Programming Language :: Python :: 3",
+        "Topic :: Software Development",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.6",
 )

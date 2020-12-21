@@ -18,5 +18,3 @@ fi
 if [ $cmd == "deploy" ]; then
   bash cmd/deploy.sh
 fi
-
-# Sorry for the bad syntax, I had issues developing this
