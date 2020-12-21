@@ -31,11 +31,8 @@ def runProgram(path):
     root.mainloop()
 
 
-def parseCSV(path):
-    f = open(path, "rt")
-    file = f.read()
-    f.close()
-    file = file.splitlines()
+def parseCSV(string):
+    file = string.splitlines()
     grid = []
     for i in file:
         grid.append(i.split(","))

@@ -15,7 +15,7 @@ setuptools.setup(
     project_urls={
         "Documentation": "https://github.com/BD103/Package/wiki",
         "Repository": "https://github.com/BD103/Package",
-        "Issues": "https://github.com/BD103/Package/issues"
+        "Issues": "https://github.com/BD103/Package/issues",
     },
     packages=setuptools.find_packages(),
     extras_requires={"windows": ["colorama"], "test": ["pytest", "pytest-cov"]},
@@ -29,5 +29,5 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.6',
+    python_requires=">=3.6",
 )

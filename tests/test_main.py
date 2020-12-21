@@ -40,3 +40,24 @@ How are you?
         result = bd103.console.parser.grid(string.strip())
         expected = ["Hello there.", "How are you?"]
         assert result == expected
+
+
+import bd103.griddy
+
+
+class Griddy(unittest.TestCase):
+    def test_parseCSV(self):
+        result = bd103.griddy.parseCSV("hey,there\nuwu")
+        expected = [["hey", "there"], ["uwu"]]
+        assert result == expected
+
+    def test_createCode(self):
+        result = bd103.griddy.createCode(
+            [["label|uwu", "button|ok"], ["button|no kay"]]
+        )
+        expected = """
+Label(root, text="uwu").grid(column=0, row=0)
+Button(root, text="ok").grid(column=1, row=0)
+Button(root, text="no kay").grid(column=0, row=1)
+"""
+        assert result.strip() == expected.strip()
