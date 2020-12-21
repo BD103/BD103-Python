@@ -1,7 +1,5 @@
 name: Lint
 on:
-  schedule:
-    - cron: '0 0,12 * * *'
   push:
     branches: main
   pull_request:
