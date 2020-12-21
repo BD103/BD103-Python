@@ -9,6 +9,13 @@ A bunch of random developer related functions and modules that I use.
 Go to [Github](https://github.com/BD103/Package/wiki) for the docs. :)
 
 ## Patch Notes
+### 0.1.6
+Yay! This package is now on [Github](https://github.com/BD103/Package) with tests, linters, and a running wiki. I have also done some module cleanup. Now, all console based modules (`color.py`, `clear.py`, etc.) are in the `console.py` module under a class with it's name. An example would be like the following.
+
+```python
+from bd103.console import *
+```
+
 ### 0.1.5
 Fixed link in Usage section of `README.md`, as well as implemented some happiness. Added `requirements.txt`. Implemented Black formatting. Created `griddy.py` module. Check docs for more. Adjusted `__init__.py`. Importing bd103 no longer imports the contents of other modules. Added `bd103.help()` command in `__init__.py`.
 

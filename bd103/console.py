@@ -27,7 +27,7 @@ class color:
     }
 
     def cprint(text, color):
-        if color in list:
+        if color in color.list:
             full_color_cmd = "full_color = color.list." + color
             exec(full_color_cmd)
         else:
@@ -35,7 +35,7 @@ class color:
         print(full_color + text + color.list.reset)
 
     def paint(color):
-        if color in list:
+        if color in color.list:
             full_color_cmd = "full_color = color.list." + color
             exec(full_color_cmd)
         else:
