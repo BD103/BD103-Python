@@ -14,7 +14,7 @@ def scroll(text, delay=0.03):
 
 
 class color:
-    list = {
+    Codes = {
         "reset": "\033[0m",
         "black": "\033[30m",
         "red": "\033[31m",
@@ -26,20 +26,20 @@ class color:
         "white": "\033[37m",
     }
 
-    def cprint(text, color):
-        if color in color.list:
+    def cprint(text, text_color):
+        if text_color in color.Codes:
             full_color_cmd = "full_color = color.list." + color
             exec(full_color_cmd)
         else:
-            full_color = color.list.reset
+            full_color = color.Codes["reset"]
         print(full_color + text + color.list.reset)
 
-    def paint(color):
-        if color in color.list:
+    def paint(text_color):
+        if text_color in color.Codes:
             full_color_cmd = "full_color = color.list." + color
             exec(full_color_cmd)
         else:
-            full_color = color.list.reset
+            full_color = color.Codes["reset"]
         print(full_color, end="")
 
 
