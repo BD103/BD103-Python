@@ -1,7 +1,3 @@
-"""
-Scrolling Text Module for the BD103 Package
-"""
-
 import time
 
 

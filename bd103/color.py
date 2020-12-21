@@ -1,8 +1,3 @@
-"""
-Color Module for the BD103 Package
-"""
-
-
 def cprint(text, color):
     if color == "reset":
         print("\u001b[0m" + text)

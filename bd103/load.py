@@ -1,8 +1,4 @@
-"""
-Loadbar Module for the BD103 Package
-"""
 import time
-import os
 
 
 def loadbar(value, length=100):

@@ -1,8 +1,3 @@
-"""
-Parser Module for the BD103 Package
-"""
-
-
 def grid(path):
     final = []
     f = open(path, "r")

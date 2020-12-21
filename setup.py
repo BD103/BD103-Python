@@ -13,18 +13,19 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://bd103.github.io",
     project_urls={
-      "Documentation": "https://github.com/BD103/Package/wiki",
-      "Repository": "https://github.com/BD103/Package",
-      "Issues": "https://github.com/BD103/Package/issues"
+        "Documentation": "https://github.com/BD103/Package/wiki",
+        "Repository": "https://github.com/BD103/Package",
+        "Issues": "https://github.com/BD103/Package/issues"
     },
     packages=setuptools.find_packages(),
+    extras_requires={"windows": ["colorama"], "test": ["pytest", "pytest-cov"]},
     classifiers=[
-				"Development Status :: 4 - Beta",
-				"Intended Audience :: Developers",
-				"Natural Language :: English",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Natural Language :: English",
         "Programming Language :: Python :: 3.8",
-				"Programming Language :: Python :: 3 :: Only",
-				"Topic :: Software Development",
+        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Software Development",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
