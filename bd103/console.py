@@ -75,13 +75,9 @@ class load:
     print()
 
 class parser:
-  def grid(path):
-    final = []
-    f = open(path, "r")
-    for i in f:
-        final.append(i)
-    f.close()
-    return final
+  # Also getting deprecated because its so simple
+  def grid(text):
+    return text.split("\n")
 
 '''
 Deprecated, use split() function
