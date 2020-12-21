@@ -14,7 +14,14 @@ Yay! This package is now on [Github](https://github.com/BD103/Package) with test
 
 ```python
 from bd103.console import *
+color.paint("cyan")
 ```
+
+If you understand how packages work, it is also recommended to look at the source code to fully understand the layout.
+
+> This change does not affect the griddy module. Continue using that as normal.
+
+Also, if you are using a windows device, run `pip install BD103[windows]` instead of the normal `BD103`. This imports Colorama so that the color class will work. There were also a few package based changes to `griddy.py`, but this shouldn't affect existing code. 
 
 ### 0.1.5
 Fixed link in Usage section of `README.md`, as well as implemented some happiness. Added `requirements.txt`. Implemented Black formatting. Created `griddy.py` module. Check docs for more. Adjusted `__init__.py`. Importing bd103 no longer imports the contents of other modules. Added `bd103.help()` command in `__init__.py`.
