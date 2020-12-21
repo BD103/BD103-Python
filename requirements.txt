@@ -3,3 +3,4 @@ setuptools
 twine
 black
 pytest
+-e .

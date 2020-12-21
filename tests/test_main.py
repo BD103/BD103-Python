@@ -29,3 +29,4 @@ How are you?
     result = bd103.console.parser.grid(string.strip())
     expected = ["Hello there.", "How are you?"]
     assert result == expected
+
