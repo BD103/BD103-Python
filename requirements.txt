@@ -2,3 +2,4 @@ wheel
 setuptools
 twine
 black
+pytest
