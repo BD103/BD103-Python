@@ -54,13 +54,16 @@ class color:
 
 class load:
   def loadbar(value, length=100):
-    loading = "[{}]"
-    bars = round(value / length * 10)
+    sample = "[{}]"
+    if value <= length:
+      bars = round(value / length * 10)
+    elif value > length:
+      bars = round(length / length * 10)
     hash = ""
     for i in range(0, bars):
         hash += "#"
     hash += (10 - len(hash)) * " "
-    return loading.format(hash)
+    return sample.format(hash)
 
 
   def load(length=100):
