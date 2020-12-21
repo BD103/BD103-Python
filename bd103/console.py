@@ -28,16 +28,18 @@ class color:
 
     def cprint(text, text_color):
         if text_color in color.Codes:
-            full_color_cmd = "full_color = color.list." + color
-            exec(full_color_cmd)
+            for i in color.Codes:
+                if i == text_color.lower():
+                    full_color = color.Codes[i]
         else:
             full_color = color.Codes["reset"]
-        print(full_color + text + color.list.reset)
+        print(full_color + text + color.Codes["reset"])
 
     def paint(text_color):
         if text_color in color.Codes:
-            full_color_cmd = "full_color = color.list." + color
-            exec(full_color_cmd)
+            for i in color.Codes:
+                if i == text_color.lower():
+                    full_color = color.Codes[i]
         else:
             full_color = color.Codes["reset"]
         print(full_color, end="")
