@@ -11,46 +11,33 @@ def scroll(text, delay=0.03):
     print()
 
 class color:
+  list = {
+    "reset": "\033[0m",
+    "black": "\033[30m",
+    "red": "\033[31m",
+    "green": "\033[32m",
+    "yellow": "\033[33m",
+    "blue": "\033[34m",
+    "magenta": "\033[35m",
+    "cyan": "\033[36m",
+    "white": "\033[37m"
+  }
   def cprint(text, color):
-    if color == "reset":
-        print("\u001b[0m" + text)
-    elif color == "red":
-        print("\u001b[31m" + text + "\u001b[0m")
-    elif color == "yellow":
-        print("\u001b[33m" + text + "\u001b[0m")
-    elif color == "green":
-        print("\u001b[32m" + text + "\u001b[0m")
-    elif color == "cyan":
-        print("\u001b[36m" + text + "\u001b[0m")
-    elif color == "blue":
-        print("\u001b[34m" + text + "\u001b[0m")
-    elif color == "magenta":
-        print("\u001b[35m" + text + "\u001b[0m")
-    elif color == "black":
-        print("\u001b[30m" + text + "\u001b[0m")
-    elif color == "white":
-        print("\u001b[37m" + text + "\u001b[0m")
+    if color in list:
+      full_color_cmd = "full_color = color.list." + color
+      exec(full_color_cmd)
+    else:
+      full_color = color.list.reset
+    print(full_color + text + color.list.reset)
 
 
   def paint(color):
-    if color == "reset":
-        color.cprint("", "reset")
-    elif color == "red":
-        color.cprint("", "red")
-    elif color == "yellow":
-        color.cprint("", "yellow")
-    elif color == "green":
-        color.cprint("", "green")
-    elif color == "cyan":
-        color.cprint("", "cyan")
-    elif color == "blue":
-        color.cprint("", "blue")
-    elif color == "magenta":
-        color.cprint("", "magenta")
-    elif color == "black":
-        color.cprint("", "black")
-    elif color == "white":
-        color.cprint("", "white")
+    if color in list:
+      full_color_cmd = "full_color = color.list." + color
+      exec(full_color_cmd)
+    else:
+      full_color = color.list.reset
+    print(full_color, end="")
 
 class load:
   def loadbar(value, length=100):
