@@ -139,3 +139,4 @@ cython_debug/
 
 # Other things
 main.py
+.idea/
