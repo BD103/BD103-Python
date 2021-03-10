@@ -1,2 +1,0 @@
-run = "bash main.sh"
-onboot = "bash cmd/onboot.sh"

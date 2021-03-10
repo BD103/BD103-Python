@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "BD103"
+version = "1.0.0"
+description = "Assorted Developer Functions"
+authors = ["BD103 <dont@stalk.me>"]
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://bd103.github.io"
+repository = "https://github.com/BD103/Package" 
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^7.1.2"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.2"
+pytest-cov = "^2.11.1"
+pytest-mock = "^3.5.1"
+isort = "^5.7.0"
+flake8 = "^3.8.4"
+
+[tool.poetry.scripts]
+bd103 = "bd103.__main__:bd103"
+bd103-pkgdev = "bd103.pkgdev:cli"
+
+[tool.isort]
+profile = "black"
+atomic = true
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
