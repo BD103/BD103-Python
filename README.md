@@ -19,4 +19,4 @@ This package is being updated and changed away from functions and towards more d
 
 ### 1.0.0
 
-*Black Space*
+*Blank Space*
