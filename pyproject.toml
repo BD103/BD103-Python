@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "BD103"
-version = "1.0.0"
+version = "0.2.0"
 description = "Assorted Developer Functions"
 authors = ["BD103 <dont@stalk.me>"]
 license = "Apache-2.0"
@@ -13,15 +13,8 @@ python = "^3.8"
 click = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.2"
-pytest-cov = "^2.11.1"
-pytest-mock = "^3.5.1"
-isort = "^5.7.0"
-flake8 = "^3.8.4"
 
 [tool.poetry.scripts]
-bd103 = "bd103.__main__:bd103"
-bd103-pkgdev = "bd103.pkgdev:cli"
 
 [tool.isort]
 profile = "black"
