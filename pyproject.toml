@@ -1,24 +1,19 @@
 [tool.poetry]
 name = "BD103"
-version = "0.2.0"
-description = "Assorted Developer Functions"
+version = "1.0.0"
+description = "BD103's Python Package"
 authors = ["BD103 <dont@stalk.me>"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://bd103.github.io"
-repository = "https://github.com/BD103/Package" 
+homepage = "https://bd103.thedev.id"
+repository = "https://github.com/BD103/BD103-Python" 
 
 [tool.poetry.dependencies]
 python = "^3.8"
-click = "^7.1.2"
 
 [tool.poetry.dev-dependencies]
 
 [tool.poetry.scripts]
-
-[tool.isort]
-profile = "black"
-atomic = true
 
 [build-system]
 requires = ["poetry>=0.12"]
