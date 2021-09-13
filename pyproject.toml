@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "BD103"
-version = "1.0.0"
+version = "1.1.0"
 description = "BD103's Python Package"
 authors = ["BD103 <dont@stalk.me>"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://bd103.thedev.id"
+homepage = "https://bd103.github.io"
 repository = "https://github.com/BD103/BD103-Python" 
 
 [tool.poetry.dependencies]

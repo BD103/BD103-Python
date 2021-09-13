@@ -19,23 +19,33 @@ class Hex(object):
   }
 
   def __init__(self, string: str):
-    self.og = string.lower();
+    self.og = Hex.make_safe(string)
 
-  def _convert(self, char: str) -> int:
-    return self.key.get(char)
+  def make_safe(string: str) -> str:
+    if string.startswith("#"):
+      string = string[1:]
+    
+    for i in string:
+      if i not in Hex.key:
+        raise Exception("Invalid Hex Code")
+    
+    return string.lower()
+
+  def convert_char(char: str) -> int:
+    return Hex.key.get(char)
 
   def to_decimal(self) -> int:
-    sum = self._convert(self.og[0])
+    sum = Hex.convert_char(self.og[0])
     
     if len(self.og) == 1:
       return sum
     
     for i in self.og[1:]:
       sum *= 16
-      sum += self._convert(i)
+      sum += Hex.convert_char(i)
     
     return sum
 
 
 if __name__ == "__main__":
-  print(Hex("e4").to_decimal())
+  print(Hex("ff").to_decimal())
