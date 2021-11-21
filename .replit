@@ -1,0 +1,2 @@
+run = "python --version"
+language = "nix"
