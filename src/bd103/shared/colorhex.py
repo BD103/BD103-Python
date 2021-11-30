@@ -23,7 +23,7 @@ class ColorHex(object):
         else:
             raise Exception("Invalid length of hex")
 
-    def to_rgb(self) -> tuple:
+    def to_tuple(self) -> tuple:
         self.convert()
         return (self.red, self.green, self.blue)
 
