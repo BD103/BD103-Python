@@ -13,7 +13,7 @@ Note:
 import functools
 from collections import abc
 
-from bd103 import requires_module
+from bd103.decorators import requires_module
 
 try:
     import trio
