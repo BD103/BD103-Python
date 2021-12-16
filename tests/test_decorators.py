@@ -2,7 +2,7 @@ import platform
 
 import pytest
 
-from bd103 import requires_module, requires_os
+from bd103.decorators import requires_module, requires_os
 
 
 class TestRequiresOs(object):
