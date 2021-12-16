@@ -557,8 +557,8 @@ ext = ["trio"]
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.8"
-content-hash = "c66702a5414cf2c293cf0843be9b555e4815cf5a20068eadbb6ba402c1849aa0"
+python-versions = "^3.9"
+content-hash = "c89a9ba42bb328aaa1c2805e48c524fa2977ccbb2c38494f6ce9d55ecf32d2e8"
 
 [metadata.files]
 alabaster = [
