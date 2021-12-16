@@ -43,12 +43,12 @@ def requires_os(
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             if isinstance(os_name, str):
-                if platform.system().lower() == os_name:
+                if platform.system().lower() == os_name.lower():
                     return func(*args, **kwargs)
                 elif not silent:
                     raise OSError(f"OS {platform.system()} does not equal {os_name}")
             elif isinstance(os_name, list):
-                if platform.system().lower() in os_name:
+                if platform.system().lower() in [i.lower() for i in os_name]:
                     return func(*args, **kwargs)
                 elif not silent:
                     raise OSError(f"OS {platform.system()} is not in {os_name}")
