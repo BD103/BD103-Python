@@ -6,8 +6,8 @@ See Also:
     - `Dogelib <https://github.com/BD103/Dogelib>`_
 """
 
-from random import randint
 from collections import abc
+from random import randint
 
 _colors: dict[str, list[int]] = {
     "basic": [31, 33, 32, 36, 34, 35],

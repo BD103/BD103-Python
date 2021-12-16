@@ -1,5 +1,4 @@
-from bd103.richtext import make_rainbow, make_colorful, _colors
-import pytest
+from bd103.richtext import _colors, make_colorful, make_rainbow
 
 
 class TestMakeRainbow(object):
@@ -41,12 +40,12 @@ class TestMakeColorful(object):
         test_output = [f"\x1b[{i}mI am very colorful\x1b[0m" for i in _colors["bg"]]
 
         assert make_colorful(TestMakeColorful.test_input, "bg") in test_output
-    
+
     def test_ex(self):
         test_output = [f"\x1b[{i}mI am very colorful\x1b[0m" for i in _colors["ex"]]
 
         assert make_colorful(TestMakeColorful.test_input, "ex") in test_output
-    
+
     def test_bgex(self):
         test_output = [f"\x1b[{i}mI am very colorful\x1b[0m" for i in _colors["bgex"]]
 
