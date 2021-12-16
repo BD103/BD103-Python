@@ -31,7 +31,7 @@ jobs:
         run: poetry run black . --check
       
       - name: Check with Isort
-        run: poetry run isort . -v -c
+        run: poetry run isort . -c
       
       - name: Check with Flake8
         run: poetry run flake8
