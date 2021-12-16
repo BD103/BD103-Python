@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Rich Text API (bd103.richtext) &#8212; BD103-Python 2.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="canonical" href="https://bd103.github.io/BD103-Python/api/richtext.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data APIs (bd103.data)" href="data/data.html" />
+    <link rel="prev" title="Decorators API (bd103.decorators)" href="decorators.html" />
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/main.css">
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data/data.html" title="Data APIs (bd103.data)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="decorators.html" title="Decorators API (bd103.decorators)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="api.html" accesskey="U">BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Rich Text API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.richtext</span></code>)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-bd103.richtext">
+<span id="rich-text-api-bd103-richtext"></span><h1>Rich Text API (<a class="reference internal" href="#module-bd103.richtext" title="bd103.richtext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.richtext</span></code></a>)<a class="headerlink" href="#module-bd103.richtext" title="Permalink to this headline">¶</a></h1>
+<p>Does some fun assorted things with ANSI color codes.</p>
+<p>This module originally came from a small project called Dogelib. That project is now archived, but the code lives on.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/BD103/Dogelib">Dogelib</a></p></li>
+</ul>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="bd103.richtext.make_colorful">
+<span class="sig-prename descclassname"><span class="pre">bd103.richtext.</span></span><span class="sig-name descname"><span class="pre">make_colorful</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">palette</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'basic'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/bd103/richtext.html#make_colorful"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.richtext.make_colorful" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bd103.richtext.make_rainbow">
+<span class="sig-prename descclassname"><span class="pre">bd103.richtext.</span></span><span class="sig-name descname"><span class="pre">make_rainbow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">palette</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'basic'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../_modules/bd103/richtext.html#make_rainbow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.richtext.make_rainbow" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="decorators.html"
+                        title="previous chapter">Decorators API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.decorators</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="data/data.html"
+                        title="next chapter">Data APIs (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/richtext.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="data/data.html" title="Data APIs (bd103.data)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="decorators.html" title="Decorators API (bd103.decorators)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="api.html" >BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Rich Text API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.richtext</span></code>)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 1980, BD103.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+    </div>
+  </body>
+</html>

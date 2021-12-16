@@ -1,4 +1,7 @@
 """Collection a various utilities and modules that do random stuff.
 
-This is an all-in-one package that contains assorted code that does assorted things. There are also other implementations of this library for different languages, like BD103-Java.
+This is an all-in-one package that contains assorted code that does assorted things.
 """
+
+from bd103.decorators import requires_module, requires_os
+from bd103.richtext import make_colorful, make_rainbow

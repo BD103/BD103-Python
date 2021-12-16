@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Decorators API (bd103.decorators) &#8212; BD103-Python 2.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="canonical" href="https://bd103.github.io/BD103-Python/api/decorators.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Rich Text API (bd103.richtext)" href="richtext.html" />
+    <link rel="prev" title="BD103 API (bd103)" href="api.html" />
+     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/main.css">
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="richtext.html" title="Rich Text API (bd103.richtext)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="BD103 API (bd103)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="api.html" accesskey="U">BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Decorators API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.decorators</span></code>)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="decorators-api-bd103-decorators">
+<h1>Decorators API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.decorators</span></code>)<a class="headerlink" href="#decorators-api-bd103-decorators" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="bd103.decorators.requires_module">
+<span class="sig-prename descclassname"><span class="pre">&#64;</span></span><span class="sig-prename descclassname"><span class="pre">bd103.decorators.</span></span><span class="sig-name descname"><span class="pre">requires_module</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">package</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.10)"><span class="pre">collections.abc.Callable</span></a></span></span><a class="reference internal" href="../_modules/bd103/decorators.html#requires_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.decorators.requires_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only allows the use of the function if a certain module or package is installed.</p>
+<p>This uses <a class="reference external" href="https://docs.python.org/3/library/importlib.html#module-importlib" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib</span></code></a> to detect what modules are installed. A common example of this decorator would be in the <a class="reference internal" href="ext/ext.html#module-bd103.ext" title="bd103.ext"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.ext</span></code></a> package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> – The name of the module that needs to be installed. This also works on subpackages.</p></li>
+<li><p><strong>package</strong> – Finds module relative to the given package name. See <a class="reference external" href="https://docs.python.org/3/library/importlib.html#importlib.util.find_spec" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">importlib.util.find_spec()</span></code></a>.</p></li>
+<li><p><strong>silent</strong> – If false, this function will raise a <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code></a>. If true, it will skip this function and continue.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">colorama</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">colorama</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nd">@requires_module</span><span class="p">(</span><span class="s2">&quot;colorama&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">do_color_stuff</span><span class="p">():</span>
+    <span class="n">colorama</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[34mHELLO</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span><span class="p">)</span>
+    <span class="n">colorama</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ModuleNotFoundError" title="(in Python v3.10)"><strong>ModuleNotFoundError</strong></a> – Package is most likely not installed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bd103.decorators.requires_os">
+<span class="sig-prename descclassname"><span class="pre">&#64;</span></span><span class="sig-prename descclassname"><span class="pre">bd103.decorators.</span></span><span class="sig-name descname"><span class="pre">requires_os</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">os_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">silent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable" title="(in Python v3.10)"><span class="pre">collections.abc.Callable</span></a></span></span><a class="reference internal" href="../_modules/bd103/decorators.html#requires_os"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.decorators.requires_os" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only allows the use of the function if running on a certain operating system.</p>
+<p>OS detection is done through <a class="reference external" href="https://docs.python.org/3/library/platform.html#platform.system" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">platform.system()</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>os_name</strong> – A string or list of strings that say either “windows”, “ubuntu”, or “darwin”. (Or anything that <a class="reference external" href="https://docs.python.org/3/library/platform.html#platform.system" title="(in Python v3.10)"><code class="xref py py-func docutils literal notranslate"><span class="pre">platform.system()</span></code></a> might return.)</p></li>
+<li><p><strong>silent</strong> – If false and on the wrong OS, it will raise an <a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.10)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>. If true, it will skip the function and continue.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@requires_os</span><span class="p">(</span><span class="s2">&quot;windows&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">only_windows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I CAN SEE THROUGH WINDOWS&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@requires_os</span><span class="p">([</span><span class="s2">&quot;linux&quot;</span><span class="p">,</span> <span class="s2">&quot;darwin&quot;</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">access_home</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;~/myfile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;rt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#OSError" title="(in Python v3.10)"><strong>OSError</strong></a> – Wrong OS type!</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="previous chapter">BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="richtext.html"
+                        title="next chapter">Rich Text API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.richtext</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/decorators.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="richtext.html" title="Rich Text API (bd103.richtext)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="BD103 API (bd103)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="api.html" >BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Decorators API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.decorators</span></code>)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 1980, BD103.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.1.
+    </div>
+  </body>
+</html>

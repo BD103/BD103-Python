@@ -1,5 +1,10 @@
-# From Dogelib.much
-# https://github.com/BD103/Dogelib
+"""Does some fun assorted things with ANSI color codes.
+
+This module originally came from a small project called Dogelib. That project is now archived, but the code lives on.
+
+See Also:
+    - `Dogelib <https://github.com/BD103/Dogelib>`_
+"""
 
 from random import randint
 
@@ -32,8 +37,7 @@ def make_rainbow(text: str, palette="basic") -> str:
 
 def make_colorful(text: str, palette="basic"):
     return "\u001b[{0}m{1}\u001b[0m".format(
-        _colors[palette][randint(0, len(_colors[palette]) - 1)],
-        text
+        _colors[palette][randint(0, len(_colors[palette]) - 1)], text
     )
 
 
