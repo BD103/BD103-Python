@@ -1,0 +1,8 @@
+.pytest_cache/
+.venv/
+dist/
+docs/
+.cache/
+
+# We use Black for this
+*.py
