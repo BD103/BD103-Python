@@ -26,13 +26,13 @@ One of the best ways to get started is to look for a roadmap or look into the is
 This package uses tools for code quality assurance.
 
 - Black
-    - Formats all of the Python code to follow PEP8
+  - Formats all of the Python code to follow PEP8
 - Isort
-    - Sorts import statements to be manageable
+  - Sorts import statements to be manageable
 - Flake8
-    - Checks to make sure that Black works, as well as run some other tests
+  - Checks to make sure that Black works, as well as run some other tests
 - Pytest
-    - Testing framework
+  - Testing framework
 
 To run these tools, see this handy shell script:
 

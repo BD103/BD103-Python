@@ -2,10 +2,10 @@ name: Lint
 
 on:
   push:
-    branches: [ main ]
-  
+    branches: [main]
+
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -15,23 +15,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.9"
-      
+
       - name: Install Poetry
         uses: snok/install-poetry@v1
-      
+
       - name: Install Dependencies
         run: poetry install
-      
+
       - name: Check with Black
         run: poetry run black . --check
-      
+
       - name: Check with Isort
         run: poetry run isort . -c
-      
+
       - name: Check with Flake8
         run: poetry run flake8
