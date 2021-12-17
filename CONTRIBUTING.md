@@ -44,6 +44,12 @@ flake8
 pytest
 ```
 
+You can also install them to check your code every time you commit in this project. \_This will significantly slow down commit time, but it will fix error before they become a problem.
+
+```shell
+bash bin/install-hooks.sh
+```
+
 ## Extra Dependencies
 
 If you want to test out the documentation, or want to work in the `bd103.ext` package, you may need to install extra dependencies.
