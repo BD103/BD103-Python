@@ -14,12 +14,10 @@
     <script src="../../../_static/doctools.js"></script>
     <link rel="canonical" href="https://bd103.github.io/BD103-Python/_modules/bd103/ext/trio.html" />
     <link rel="index" title="Index" href="../../../genindex.html" />
-    <link rel="search" title="Search" href="../../../search.html" />
-     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../../_static/main.css">
+    <link rel="search" title="Search" href="../../../search.html" />  
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../../../_static/moonwalk.css" />
 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -49,16 +47,16 @@
 
 <span class="sd">Note:</span>
 <span class="sd">    You can install :mod:`trio` with:</span>
-<span class="sd">    </span>
+
 <span class="sd">    .. code-block:: shell</span>
-<span class="sd">    </span>
+
 <span class="sd">        python -m pip install -U trio&quot;&quot;&quot;</span>
 
 
 <span class="kn">import</span> <span class="nn">functools</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">abc</span>
 
-<span class="kn">from</span> <span class="nn">bd103</span> <span class="kn">import</span> <span class="n">requires_module</span>
+<span class="kn">from</span> <span class="nn">bd103.decorators</span> <span class="kn">import</span> <span class="n">requires_module</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">trio</span>

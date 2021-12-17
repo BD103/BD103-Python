@@ -14,12 +14,10 @@
     <script src="../../_static/doctools.js"></script>
     <link rel="canonical" href="https://bd103.github.io/BD103-Python/_modules/bd103/richtext.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../_static/main.css">
+    <link rel="search" title="Search" href="../../search.html" />  
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../../_static/moonwalk.css" />
 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -51,9 +49,10 @@
 <span class="sd">    - `Dogelib &lt;https://github.com/BD103/Dogelib&gt;`_</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">abc</span>
 <span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
 
-<span class="n">_colors</span> <span class="o">=</span> <span class="p">{</span>
+<span class="n">_colors</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;basic&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">35</span><span class="p">],</span>
     <span class="s2">&quot;bg&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">45</span><span class="p">],</span>
     <span class="s2">&quot;ex&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">91</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">95</span><span class="p">],</span>
@@ -61,27 +60,27 @@
 <span class="p">}</span>
 
 
-<span class="k">def</span> <span class="nf">_rainbow_iter</span><span class="p">(</span><span class="n">palette</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_rainbow_iter</span><span class="p">(</span><span class="n">palette</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;basic&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">abc</span><span class="o">.</span><span class="n">Generator</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">_colors</span><span class="p">[</span><span class="n">palette</span><span class="p">]:</span>
             <span class="k">yield</span> <span class="n">i</span>
 
 
-<div class="viewcode-block" id="make_rainbow"><a class="viewcode-back" href="../../api/richtext.html#bd103.richtext.make_rainbow">[docs]</a><span class="k">def</span> <span class="nf">make_rainbow</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="make_rainbow"><a class="viewcode-back" href="../../api/richtext.html#bd103.richtext.make_rainbow">[docs]</a><span class="k">def</span> <span class="nf">make_rainbow</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">palette</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;basic&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="n">rotation</span> <span class="o">=</span> <span class="n">_rainbow_iter</span><span class="p">(</span><span class="n">palette</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
-        <span class="n">res</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\u001b</span><span class="s2">[</span><span class="si">{</span><span class="nb">next</span><span class="p">(</span><span class="n">rotation</span><span class="p">)</span><span class="si">}</span><span class="s2">m</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">{</span><span class="nb">next</span><span class="p">(</span><span class="n">rotation</span><span class="p">)</span><span class="si">}</span><span class="s2">m</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span>
 
     <span class="n">rotation</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\u001b</span><span class="s2">[0m&quot;</span>
+    <span class="n">res</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span>
 
     <span class="k">return</span> <span class="n">res</span></div>
 
 
-<div class="viewcode-block" id="make_colorful"><a class="viewcode-back" href="../../api/richtext.html#bd103.richtext.make_colorful">[docs]</a><span class="k">def</span> <span class="nf">make_colorful</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s2">&quot;basic&quot;</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\u001b</span><span class="s2">[</span><span class="si">{0}</span><span class="s2">m</span><span class="si">{1}</span><span class="se">\u001b</span><span class="s2">[0m&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<div class="viewcode-block" id="make_colorful"><a class="viewcode-back" href="../../api/richtext.html#bd103.richtext.make_colorful">[docs]</a><span class="k">def</span> <span class="nf">make_colorful</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">palette</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;basic&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\x1b</span><span class="s2">[</span><span class="si">{0}</span><span class="s2">m</span><span class="si">{1}</span><span class="se">\x1b</span><span class="s2">[0m&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="n">_colors</span><span class="p">[</span><span class="n">palette</span><span class="p">][</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">_colors</span><span class="p">[</span><span class="n">palette</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">text</span>
     <span class="p">)</span></div>
 
