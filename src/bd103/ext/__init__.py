@@ -7,4 +7,5 @@ Hint:
 
     .. code-block:: shell
 
-        python -m pip install -U bd103[ext]"""
+        python -m pip install -U bd103[ext]
+"""

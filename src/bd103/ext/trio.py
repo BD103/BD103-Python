@@ -2,12 +2,16 @@
 
 The Trio library contains an easy API for asynchronous Python programs. Most objects in this extension module will require asynchronous syntax, like ``async`` and ``await``.
 
+See Also:
+    - `Trio documentation <https://trio.readthedocs.io/en/stable/>`_
+
 Note:
     You can install :mod:`trio` with:
 
     .. code-block:: shell
 
-        python -m pip install -U trio"""
+        python -m pip install -U trio
+"""
 
 
 import functools
