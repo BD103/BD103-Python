@@ -5,4 +5,6 @@ Data APIs (:mod:`bd103.data`)
     :maxdepth: 2
     :caption: Contents:
 
+    hex
+
 .. automodule:: bd103.data

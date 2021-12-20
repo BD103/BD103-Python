@@ -9,4 +9,4 @@ if [ "$BUILDTYPE" = "" ]; then
     BUILDTYPE="html"
 fi
 
-sphinx-build -b $BUILDTYPE -d _cache -a $SOURCEDIR $BUILDDIR
+poetry run sphinx-build -b $BUILDTYPE -d _cache -a $SOURCEDIR $BUILDDIR
