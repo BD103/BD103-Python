@@ -6,8 +6,9 @@ See Also:
     - `Hexadecimal on Wikipedia <https://en.wikipedia.org/wiki/Hexadecimal>`_
 """
 
-from bidict import bidict
 import typing as t
+
+from bidict import bidict
 
 int_keys: bidict[str, int] = bidict(
     {
@@ -39,7 +40,7 @@ class HexEncoder(object):
 
     def encode_int(self, o: int) -> str:
         """Encodes an integer into its hexedecimal equivelant.
-        
+
         Args:
             o: An integer to be encoded into a hexedecimal.
         """
@@ -52,7 +53,7 @@ class HexEncoder(object):
 
     def encode_list(self, o: list[int]) -> str:
         """Encodes a list of integers into one string.
-        
+
         Args:
             o: A list of integers to be encoded.
 
@@ -69,7 +70,7 @@ class HexEncoder(object):
 
 class HexDecoder(object):
     """Used for turning a string of hexedecimals into an integer or list of integers.
-        
+
     Args:
         list_item_len: The size of each chunk of data used in :meth:`decode_list`."""
 
@@ -85,7 +86,7 @@ class HexDecoder(object):
 
         Args:
             o: A string to be converted into an integer. Some examples are ``ff``, ``e8``, or ``00``.
-        
+
         Note:
             This method even decodes uncommon forms of hexedecimal, which means that any string you give has a chance of being larger than 255. If you want to limit the maximum value, take a look at :meth:`decode_list`.
         """
@@ -103,9 +104,9 @@ class HexDecoder(object):
 
     def decode_list(self, o: str) -> list[int]:
         """Decodes a hex string into a list of integers.
-        
+
         The size of each integer returned is determined by :attr:`list_item_len`. If it is equal to 2, then :meth:`decode_list` would parse ``fe3a`` as ``[254, 58]``.
-        
+
         Args:
             o: A valid hexedecimal string."""
 
@@ -126,7 +127,7 @@ _default_decoder = HexDecoder()
 
 def dumps(o: t.Union[list[int], int], **kwargs) -> str:
     """Converts an integer or list of integers into a string.
-    
+
     Args:
         o: An integer or list of integers to be encoded.
         **kwargs: Arguments to be passed on initialization of a new instance of :class:`HexEncoder`.
@@ -145,7 +146,7 @@ def dumps(o: t.Union[list[int], int], **kwargs) -> str:
 
 def loads(o: str, return_list: bool = True, **kwargs) -> list[int]:
     """Converts a hexedecimal string to an integer or list of integers.
-    
+
     Args:
         o: A hexedecimal string to be decoded.
         return_list: Whether to return a list of integers or one combined integer.
@@ -155,7 +156,7 @@ def loads(o: str, return_list: bool = True, **kwargs) -> list[int]:
         decoder = _default_decoder
     else:
         decoder = HexDecoder(**kwargs)
-    
+
     if return_list:
         return decoder.decode_list(o)
     else:
