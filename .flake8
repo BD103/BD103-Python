@@ -3,5 +3,6 @@ max-line-length = 88
 extend-exclude =
     .venv/
 extend-ignore =
+    E203
     E501
 per-file-ignores = __init__.py:F401
