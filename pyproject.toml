@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "BD103"
-version = "2.0.0"
+version = "2.1.0"
 description = "BD103's Python Package"
 authors = ["BD103 <dont@stalk.me>"]
 license = "Apache-2.0"
