@@ -43,6 +43,11 @@ class HexEncoder(object):
         prefix_str_encoding: If true, all encoded strings will be prefixed with the encoding of the text.
         truth_value: When given a boolean, it will translate the value to a number. Default or 15, or ``f``.
         default_str_encoding: The encoding that should be preferred when encoding strings.
+        string_encode_error_handler: How to treat errors when formatting a string in :meth:`encode_str`.
+        string_decode_error_handler: How to treat errors when converting bytes to string in :meth:`encode_str`.
+    
+    See Also:
+        - `Encode / Decode error handlers <https://docs.python.org/3/library/codecs.html#error-handlers>`_
     """
 
     return_uppercase: bool
@@ -50,6 +55,8 @@ class HexEncoder(object):
     prefix_str_encoding: bool
     truth_value: int
     default_str_encoding: str
+    string_encode_error_handler: str
+    string_decode_error_handler: str
 
     def __init__(
         self,
@@ -58,12 +65,16 @@ class HexEncoder(object):
         prefix_str_encoding: bool = True,
         truth_value: int = 255,
         default_str_encoding: str = "ascii",
+        string_encode_error_handler: str = "strict",
+        string_decode_error_handler: str = "strict",
     ):
         self.return_uppercase = return_uppercase
         self.prefix_zero = prefix_zero
         self.prefix_str_encoding = prefix_str_encoding
         self.truth_value = truth_value
         self.default_str_encoding = default_str_encoding
+        self.string_encode_error_handler = string_encode_error_handler
+        self.string_decode_error_handler = string_decode_error_handler
 
     def encode_int(self, o: int) -> str:
         # Ensure it is integer
@@ -111,7 +122,9 @@ class HexEncoder(object):
             yield _str_encoding
 
         for char in o:
-            yield binascii.b2a_hex(char.encode(_str_encoding)).decode()
+            yield binascii.b2a_hex(
+                char.encode(_str_encoding, errors=self.string_encode_error_handler)
+            ).decode(errors=self.string_decode_error_handler)
 
     def encode_list(self, o: list[t.Union[str, list[str]]]):
         """Encodes a list of data through :meth:`smart_encode`.
