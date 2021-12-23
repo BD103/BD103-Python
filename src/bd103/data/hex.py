@@ -56,7 +56,7 @@ class HexEncoder(object):
         return_uppercase: bool = False,
         prefix_zero: bool = True,
         prefix_str_encoding: bool = True,
-        truth_value: int = 15,
+        truth_value: int = 255,
         default_str_encoding: str = "ascii",
     ):
         self.return_uppercase = return_uppercase
@@ -87,7 +87,7 @@ class HexEncoder(object):
 
     def encode_bool(self, o: bool) -> str:
         if o:
-            return self._format_response(hex_keys.inverse[self.truth_value])
+            return self._format_response(self.encode_int(self.truth_value))
         else:
             return self._format_response(hex_keys.inverse[0])
 
