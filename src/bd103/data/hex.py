@@ -113,6 +113,16 @@ class HexEncoder(object):
         for char in o:
             yield binascii.b2a_hex(char.encode(_str_encoding)).decode()
 
+    def encode_list(self, o: list[t.Union[str, list[str]]]):
+        """Encodes a list of data through :meth:`smart_encode`.
+
+        Warning:
+            Encoded strings and lists have the same data type.
+            When decoding a list, make sure you configure :class:`HexDecoder` to prefer the list or string type.
+            This may cause weird errors in your code, so it is recommended to only encode simple data types.
+        """
+        return [self.smart_encode(i) for i in o]
+
     def _format_response(self, o: str) -> str:
         res = o
 
@@ -133,8 +143,12 @@ class HexEncoder(object):
             return self.encode_str(o)
         elif isinstance(o, bool):
             return self.encode_bool(o)
+        elif isinstance(o, list):
+            return self.encode_list(o)
         else:
-            raise TypeError(f"Given data {repr(o)}'s type is not supported by HexEncoder")
+            raise TypeError(
+                f"Given data {repr(o)}'s type is not supported by HexEncoder"
+            )
 
 
 class HexDecoder(object):
