@@ -126,6 +126,16 @@ class HexEncoder(object):
 
         return res
 
+    def smart_encode(self, o: t.Any) -> t.Union[str, list[str]]:
+        if isinstance(o, int):
+            return self.encode_int(o)
+        elif isinstance(o, str):
+            return self.encode_str(o)
+        elif isinstance(o, bool):
+            return self.encode_bool(o)
+        else:
+            raise TypeError(f"Given data {repr(o)}'s type is not supported by HexEncoder")
+
 
 class HexDecoder(object):
     def __init__(self):
@@ -149,21 +159,14 @@ def dumps(o: t.Any, **kwargs) -> t.Union[str, list[str]]:
     else:
         encoder = HexEncoder(**kwargs)
 
-    if isinstance(o, int):
-        return encoder.encode_int(o)
-    elif isinstance(o, str):
-        return encoder.encode_str(o)
-    elif isinstance(o, bool):
-        return encoder.encode_bool(o)
-    else:
-        raise TypeError("Given data type is not supported by HexEncoder")
+    return encoder.smart_encode(o)
 
 
-def loads(o: str, **kwargs) -> int:
-    """Converts a hexedecimal string to an integer or list of integers.
+def loads(o: str, **kwargs):
+    """Converts a hexadecimal string to an integer or list of integers.
 
     Args:
-        o: A hexedecimal string to be decoded.
+        o: A hexadecimal string to be decoded.
         **kwargs: Arguments to be passed on initialization of a new instance of :class:`HexDecoder`.
     """
     if not kwargs:
