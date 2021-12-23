@@ -45,7 +45,7 @@ class HexEncoder(object):
         default_str_encoding: The encoding that should be preferred when encoding strings.
         string_encode_error_handler: How to treat errors when formatting a string in :meth:`encode_str`.
         string_decode_error_handler: How to treat errors when converting bytes to string in :meth:`encode_str`.
-    
+
     See Also:
         - `Encode / Decode error handlers <https://docs.python.org/3/library/codecs.html#error-handlers>`_
     """
@@ -150,12 +150,12 @@ class HexEncoder(object):
         return res
 
     def smart_encode(self, o: t.Any) -> t.Union[str, list[str]]:
-        if isinstance(o, int):
+        if isinstance(o, bool):
+            return self.encode_bool(o)
+        elif isinstance(o, int):
             return self.encode_int(o)
         elif isinstance(o, str):
             return self.encode_str(o)
-        elif isinstance(o, bool):
-            return self.encode_bool(o)
         elif isinstance(o, list):
             return self.encode_list(o)
         else:
