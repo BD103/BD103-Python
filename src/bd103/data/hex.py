@@ -7,6 +7,7 @@ See Also:
 """
 
 import binascii
+import typing as t
 from collections import abc
 
 from bidict import bidict
@@ -34,24 +35,35 @@ hex_keys: bidict[str, int] = bidict(
 
 
 class HexEncoder(object):
-    """Used to turn data into a string of hexedecimals.
+    """Used to turn data into a string of hexadecimals.
 
     Args:
-        return_uppercase: Whether letters in returned hex should be capitalized. Default is false, uncapitalized.
+        return_uppercase: Whether letters in returned hex should be capitalized.
         prefix_zero: If the returned value if only 1 character long, it will prefix the returned value with a ``0``.
         prefix_str_encoding: If true, all encoded strings will be prefixed with the encoding of the text.
         truth_value: When given a boolean, it will translate the value to a number. Default or 15, or ``f``.
+        default_str_encoding: The encoding that should be preferred when encoding strings.
     """
 
-    return_uppercase: bool = False
-    prefix_zero: bool = True
-    prefix_str_encoding: bool = True
-    truth_value: int = 15
-    default_str_encoding: str = "ascii"
+    return_uppercase: bool
+    prefix_zero: bool
+    prefix_str_encoding: bool
+    truth_value: int
+    default_str_encoding: str
 
-    def __init__(self, return_uppercase: bool = None, truth_value: int = None):
-        self.return_uppercase = return_uppercase or self.return_uppercase
-        self.truth_value = truth_value or self.truth_value
+    def __init__(
+        self,
+        return_uppercase: bool = False,
+        prefix_zero: bool = True,
+        prefix_str_encoding: bool = True,
+        truth_value: int = 15,
+        default_str_encoding: str = "ascii",
+    ):
+        self.return_uppercase = return_uppercase
+        self.prefix_zero = prefix_zero
+        self.prefix_str_encoding = prefix_str_encoding
+        self.truth_value = truth_value
+        self.default_str_encoding = default_str_encoding
 
     def encode_int(self, o: int) -> str:
         # Ensure it is integer
@@ -64,7 +76,7 @@ class HexEncoder(object):
 
         return self._format_response(self._encode_int(o))
 
-    def _encode_int(self, o: int) -> str:
+    def _encode_int(self, o: t.Union[int, float]) -> str:
         remainder = o % 16
 
         if o - remainder == 0:
@@ -80,16 +92,26 @@ class HexEncoder(object):
             return self._format_response(hex_keys.inverse[0])
 
     def encode_str(self, o: str, str_encoding: str = None) -> list[str]:
-        return list(self.i_encode_str(o, str_encoding=str_encoding))
+        str_loop = self.i_encode_str(o, str_encoding)
 
-    def i_encode_str(self, o: str, str_encoding: str = None) -> abc.Iterable:
+        if self.prefix_str_encoding:
+            # So the encoding doesn't get formatted
+            res = [next(str_loop)]
+        else:
+            res = []
+
+        res += [self._format_response(i) for i in str_loop]
+
+        return res
+
+    def i_encode_str(self, o: str, str_encoding: str = None) -> abc.Iterable[str]:
         _str_encoding = str_encoding or self.default_str_encoding
 
         if self.prefix_str_encoding:
             yield _str_encoding
 
         for char in o:
-            yield binascii.b2a_hex(char.encode(_str_encoding))
+            yield binascii.b2a_hex(char.encode(_str_encoding)).decode()
 
     def _format_response(self, o: str) -> str:
         res = o
@@ -114,7 +136,7 @@ _default_encoder = HexEncoder()
 _default_decoder = HexDecoder()
 
 
-def dumps(o: int, **kwargs) -> str:
+def dumps(o: t.Any, **kwargs) -> t.Union[str, list[str]]:
     """Converts an integer or list of integers into a string.
 
     Args:
@@ -129,6 +151,12 @@ def dumps(o: int, **kwargs) -> str:
 
     if isinstance(o, int):
         return encoder.encode_int(o)
+    elif isinstance(o, str):
+        return encoder.encode_str(o)
+    elif isinstance(o, bool):
+        return encoder.encode_bool(o)
+    else:
+        raise TypeError("Given data type is not supported by HexEncoder")
 
 
 def loads(o: str, **kwargs) -> int:
@@ -145,7 +173,3 @@ def loads(o: str, **kwargs) -> int:
 
     # Just a placeholder
     print(decoder)
-
-
-if __name__ == "__main__":
-    pass
