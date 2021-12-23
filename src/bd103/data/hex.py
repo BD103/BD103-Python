@@ -6,11 +6,12 @@ See Also:
     - `Hexadecimal on Wikipedia <https://en.wikipedia.org/wiki/Hexadecimal>`_
 """
 
-import typing as t
+import binascii
+from collections import abc
 
 from bidict import bidict
 
-int_keys: bidict[str, int] = bidict(
+hex_keys: bidict[str, int] = bidict(
     {
         "0": 0,
         "1": 1,
@@ -33,99 +34,87 @@ int_keys: bidict[str, int] = bidict(
 
 
 class HexEncoder(object):
-    """Used to turn an integer or list of integers into a string of hexedecimals."""
+    """Used to turn data into a string of hexedecimals.
 
-    def __init__(self):
-        pass
+    Args:
+        return_uppercase: Whether letters in returned hex should be capitalized. Default is false, uncapitalized.
+        prefix_zero: If the returned value if only 1 character long, it will prefix the returned value with a ``0``.
+        prefix_str_encoding: If true, all encoded strings will be prefixed with the encoding of the text.
+        truth_value: When given a boolean, it will translate the value to a number. Default or 15, or ``f``.
+    """
+
+    return_uppercase: bool = False
+    prefix_zero: bool = True
+    prefix_str_encoding: bool = True
+    truth_value: int = 15
+    default_str_encoding: str = "ascii"
+
+    def __init__(self, return_uppercase: bool = None, truth_value: int = None):
+        self.return_uppercase = return_uppercase or self.return_uppercase
+        self.truth_value = truth_value or self.truth_value
 
     def encode_int(self, o: int) -> str:
-        """Encodes an integer into its hexedecimal equivelant.
+        # Ensure it is integer
+        if not isinstance(o, int):
+            raise TypeError(f"o's type {type(o)} is not an integer")
 
-        Args:
-            o: An integer to be encoded into a hexedecimal.
-        """
+        # Ensure that no recursion error happens when converting negative numbers
+        if not o >= 0:
+            raise TypeError("o cannot be converted to a hex because it is less than 0")
+
+        return self._format_response(self._encode_int(o))
+
+    def _encode_int(self, o: int) -> str:
         remainder = o % 16
 
         if o - remainder == 0:
-            return int_keys.inverse[remainder]
+            return hex_keys.inverse[remainder]
 
-        return self.encode_int((o - remainder) / 16) + int_keys.inverse[remainder]
+        # Recursively find value then add together
+        return self._encode_int((o - remainder) / 16) + hex_keys.inverse[remainder]
 
-    def encode_list(self, o: list[int]) -> str:
-        """Encodes a list of integers into one string.
+    def encode_bool(self, o: bool) -> str:
+        if o:
+            return self._format_response(hex_keys.inverse[self.truth_value])
+        else:
+            return self._format_response(hex_keys.inverse[0])
 
-        Args:
-            o: A list of integers to be encoded.
+    def encode_str(self, o: str, str_encoding: str = None) -> list[str]:
+        return list(self.i_encode_str(o, str_encoding=str_encoding))
 
-        Note:
-            Make sure you know the maximum size of each integer. If you wish to decode the values again, you will need to determine the value of :attr:`HexDecoder.list_item_len`. If any integer is greater than 15, it will have to have a chunk size of 2. Greater than 255 deems a chunk size of 3.
-        """
-        res = ""
+    def i_encode_str(self, o: str, str_encoding: str = None) -> abc.Iterable:
+        _str_encoding = str_encoding or self.default_str_encoding
 
-        for i in o:
-            res += self.encode_int(i)
+        if self.prefix_str_encoding:
+            yield _str_encoding
+
+        for char in o:
+            yield binascii.b2a_hex(char.encode(_str_encoding))
+
+    def _format_response(self, o: str) -> str:
+        res = o
+
+        if self.return_uppercase:
+            res = res.upper()
+        else:
+            res = res.lower()
+
+        if self.prefix_zero and len(res) == 1:
+            res = "0" + res
 
         return res
 
 
 class HexDecoder(object):
-    """Used for turning a string of hexedecimals into an integer or list of integers.
-
-    Args:
-        list_item_len: The size of each chunk of data used in :meth:`decode_list`."""
-
-    list_item_len: int = 2
-
-    def __init__(self, list_item_len: int = None):
-        self.list_item_len = list_item_len or self.list_item_len
-
-    def decode_int(self, o: str) -> int:
-        """Decodes a hex string into one integer.
-
-        This function converts each character then multiplies it by 16 if there is another character after it.
-
-        Args:
-            o: A string to be converted into an integer. Some examples are ``ff``, ``e8``, or ``00``.
-
-        Note:
-            This method even decodes uncommon forms of hexedecimal, which means that any string you give has a chance of being larger than 255. If you want to limit the maximum value, take a look at :meth:`decode_list`.
-        """
-
-        res = int_keys[o[0]]
-
-        if len(o) == 1:
-            return res
-
-        for i in o[1:]:
-            res *= 16
-            res += int_keys[i]
-
-        return res
-
-    def decode_list(self, o: str) -> list[int]:
-        """Decodes a hex string into a list of integers.
-
-        The size of each integer returned is determined by :attr:`list_item_len`. If it is equal to 2, then :meth:`decode_list` would parse ``fe3a`` as ``[254, 58]``.
-
-        Args:
-            o: A valid hexedecimal string."""
-
-        req = [
-            o[i : i + self.list_item_len] for i in range(0, len(o), self.list_item_len)
-        ]
-        res = []
-
-        for i in req:
-            res.append(self.decode_int(i))
-
-        return res
+    def __init__(self):
+        pass
 
 
 _default_encoder = HexEncoder()
 _default_decoder = HexDecoder()
 
 
-def dumps(o: t.Union[list[int], int], **kwargs) -> str:
+def dumps(o: int, **kwargs) -> str:
     """Converts an integer or list of integers into a string.
 
     Args:
@@ -140,16 +129,13 @@ def dumps(o: t.Union[list[int], int], **kwargs) -> str:
 
     if isinstance(o, int):
         return encoder.encode_int(o)
-    elif isinstance(o, list):
-        return encoder.encode_list(o)
 
 
-def loads(o: str, return_list: bool = True, **kwargs) -> list[int]:
+def loads(o: str, **kwargs) -> int:
     """Converts a hexedecimal string to an integer or list of integers.
 
     Args:
         o: A hexedecimal string to be decoded.
-        return_list: Whether to return a list of integers or one combined integer.
         **kwargs: Arguments to be passed on initialization of a new instance of :class:`HexDecoder`.
     """
     if not kwargs:
@@ -157,11 +143,9 @@ def loads(o: str, return_list: bool = True, **kwargs) -> list[int]:
     else:
         decoder = HexDecoder(**kwargs)
 
-    if return_list:
-        return decoder.decode_list(o)
-    else:
-        return decoder.decode_int(o)
+    # Just a placeholder
+    print(decoder)
 
 
 if __name__ == "__main__":
-    print(dumps([16]))
+    pass
