@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bd103.data.hex &#8212; BD103-Python 2.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/basic.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <link rel="canonical" href="https://bd103.github.io/BD103-Python/_modules/bd103/data/hex.html" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />  
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../../../_static/moonwalk.css" />
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">bd103.data.hex</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for bd103.data.hex</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Provides methods and classes to translate various data types to and from the hex format.</span>
+
+<span class="sd">This module is heavily based off of other data format modules, like :mod:`json` and :mod:`pickle`.</span>
+
+<span class="sd">See Also:</span>
+<span class="sd">    - `Hexadecimal on Wikipedia &lt;https://en.wikipedia.org/wiki/Hexadecimal&gt;`_</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">binascii</span>
+<span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">t</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">abc</span>
+
+<span class="kn">from</span> <span class="nn">bidict</span> <span class="kn">import</span> <span class="n">bidict</span>
+
+<span class="n">hex_keys</span><span class="p">:</span> <span class="n">bidict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">bidict</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;1&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;2&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;3&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;4&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;5&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;6&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+        <span class="s2">&quot;7&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;8&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;9&quot;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+        <span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+        <span class="s2">&quot;f&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="HexEncoder"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder">[docs]</a><span class="k">class</span> <span class="nc">HexEncoder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Used to turn data into a string of hexadecimals.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        return_uppercase: Whether letters in returned hex should be capitalized.</span>
+<span class="sd">        prefix_zero: If the returned value if only 1 character long, it will prefix the returned value with a ``0``.</span>
+<span class="sd">        prefix_str_encoding: If true, all encoded strings will be prefixed with the encoding of the text.</span>
+<span class="sd">        truth_value: When given a boolean, it will translate the value to a number. Default or 15, or ``f``.</span>
+<span class="sd">        default_str_encoding: The encoding that should be preferred when encoding strings.</span>
+<span class="sd">        string_encode_error_handler: How to treat errors when formatting a string in :meth:`encode_str`.</span>
+<span class="sd">        string_decode_error_handler: How to treat errors when converting bytes to string in :meth:`encode_str`.</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        - `Encode / Decode error handlers &lt;https://docs.python.org/3/library/codecs.html#error-handlers&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">return_uppercase</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">prefix_zero</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">prefix_str_encoding</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">truth_value</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">default_str_encoding</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">string_encode_error_handler</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">string_decode_error_handler</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">return_uppercase</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">prefix_zero</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">prefix_str_encoding</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">truth_value</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span>
+        <span class="n">default_str_encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;ascii&quot;</span><span class="p">,</span>
+        <span class="n">string_encode_error_handler</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;strict&quot;</span><span class="p">,</span>
+        <span class="n">string_decode_error_handler</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;strict&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_uppercase</span> <span class="o">=</span> <span class="n">return_uppercase</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix_zero</span> <span class="o">=</span> <span class="n">prefix_zero</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix_str_encoding</span> <span class="o">=</span> <span class="n">prefix_str_encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">truth_value</span> <span class="o">=</span> <span class="n">truth_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_str_encoding</span> <span class="o">=</span> <span class="n">default_str_encoding</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">string_encode_error_handler</span> <span class="o">=</span> <span class="n">string_encode_error_handler</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">string_decode_error_handler</span> <span class="o">=</span> <span class="n">string_decode_error_handler</span>
+
+<div class="viewcode-block" id="HexEncoder.encode_int"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder.encode_int">[docs]</a>    <span class="k">def</span> <span class="nf">encode_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="c1"># Ensure it is integer</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;o&#39;s type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="si">}</span><span class="s2"> is not an integer&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Ensure that no recursion error happens when converting negative numbers</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">o</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;o cannot be converted to a hex because it is less than 0&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_response</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_encode_int</span><span class="p">(</span><span class="n">o</span><span class="p">))</span></div>
+
+    <span class="k">def</span> <span class="nf">_encode_int</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">remainder</span> <span class="o">=</span> <span class="n">o</span> <span class="o">%</span> <span class="mi">16</span>
+
+        <span class="k">if</span> <span class="n">o</span> <span class="o">-</span> <span class="n">remainder</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">hex_keys</span><span class="o">.</span><span class="n">inverse</span><span class="p">[</span><span class="n">remainder</span><span class="p">]</span>
+
+        <span class="c1"># Recursively find value then add together</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_encode_int</span><span class="p">((</span><span class="n">o</span> <span class="o">-</span> <span class="n">remainder</span><span class="p">)</span> <span class="o">/</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="n">hex_keys</span><span class="o">.</span><span class="n">inverse</span><span class="p">[</span><span class="n">remainder</span><span class="p">]</span>
+
+<div class="viewcode-block" id="HexEncoder.encode_bool"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder.encode_bool">[docs]</a>    <span class="k">def</span> <span class="nf">encode_bool</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">o</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_response</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encode_int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">truth_value</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_response</span><span class="p">(</span><span class="n">hex_keys</span><span class="o">.</span><span class="n">inverse</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="HexEncoder.encode_str"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder.encode_str">[docs]</a>    <span class="k">def</span> <span class="nf">encode_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">str_encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">str_loop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">i_encode_str</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">str_encoding</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix_str_encoding</span><span class="p">:</span>
+            <span class="c1"># So the encoding doesn&#39;t get formatted</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="nb">next</span><span class="p">(</span><span class="n">str_loop</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">res</span> <span class="o">+=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_format_response</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">str_loop</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">res</span></div>
+
+<div class="viewcode-block" id="HexEncoder.i_encode_str"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder.i_encode_str">[docs]</a>    <span class="k">def</span> <span class="nf">i_encode_str</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">str_encoding</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">_str_encoding</span> <span class="o">=</span> <span class="n">str_encoding</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_str_encoding</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix_str_encoding</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">_str_encoding</span>
+
+        <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">o</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">binascii</span><span class="o">.</span><span class="n">b2a_hex</span><span class="p">(</span>
+                <span class="n">char</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">_str_encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">string_encode_error_handler</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">string_decode_error_handler</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="HexEncoder.encode_list"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder.encode_list">[docs]</a>    <span class="k">def</span> <span class="nf">encode_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]):</span>
+        <span class="sd">&quot;&quot;&quot;Encodes a list of data through :meth:`smart_encode`.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            Encoded strings and lists have the same data type.</span>
+<span class="sd">            When decoding a list, make sure you configure :class:`HexDecoder` to prefer the list or string type.</span>
+<span class="sd">            This may cause weird errors in your code, so it is recommended to only encode simple data types.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">smart_encode</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">o</span><span class="p">]</span></div>
+
+    <span class="k">def</span> <span class="nf">_format_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">o</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_uppercase</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prefix_zero</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">+</span> <span class="n">res</span>
+
+        <span class="k">return</span> <span class="n">res</span>
+
+<div class="viewcode-block" id="HexEncoder.smart_encode"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexEncoder.smart_encode">[docs]</a>    <span class="k">def</span> <span class="nf">smart_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode_bool</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode_int</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode_str</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode_list</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Given data </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">o</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;s type is not supported by HexEncoder&quot;</span>
+            <span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="HexDecoder"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.HexDecoder">[docs]</a><span class="k">class</span> <span class="nc">HexDecoder</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span></div>
+
+
+<span class="n">_default_encoder</span> <span class="o">=</span> <span class="n">HexEncoder</span><span class="p">()</span>
+<span class="n">_default_decoder</span> <span class="o">=</span> <span class="n">HexDecoder</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="dumps"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.dumps">[docs]</a><span class="k">def</span> <span class="nf">dumps</span><span class="p">(</span><span class="n">o</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+    <span class="sd">&quot;&quot;&quot;Converts an integer or list of integers into a string.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        o: An integer or list of integers to be encoded.</span>
+<span class="sd">        **kwargs: Arguments to be passed on initialization of a new instance of :class:`HexEncoder`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">encoder</span> <span class="o">=</span> <span class="n">_default_encoder</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">encoder</span> <span class="o">=</span> <span class="n">HexEncoder</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">encoder</span><span class="o">.</span><span class="n">smart_encode</span><span class="p">(</span><span class="n">o</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="loads"><a class="viewcode-back" href="../../../api/data/hex.html#bd103.data.hex.loads">[docs]</a><span class="k">def</span> <span class="nf">loads</span><span class="p">(</span><span class="n">o</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a hexadecimal string to an integer or list of integers.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        o: A hexadecimal string to be decoded.</span>
+<span class="sd">        **kwargs: Arguments to be passed on initialization of a new instance of :class:`HexDecoder`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="n">_default_decoder</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">decoder</span> <span class="o">=</span> <span class="n">HexDecoder</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Just a placeholder</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">decoder</span><span class="p">)</span></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">bd103.data.hex</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 1980, BD103.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>

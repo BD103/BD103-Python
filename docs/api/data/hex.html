@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Hexadecimal API (bd103.data.hex) &#8212; BD103-Python 2.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="canonical" href="https://bd103.github.io/BD103-Python/api/data/hex.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extension APIs (bd103.ext)" href="../ext/ext.html" />
+    <link rel="prev" title="Data APIs (bd103.data)" href="data.html" />  
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="../../_static/moonwalk.css" />
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../ext/ext.html" title="Extension APIs (bd103.ext)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="Data APIs (bd103.data)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="data.html" accesskey="U">Data APIs (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Hexadecimal API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data.hex</span></code>)</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-bd103.data.hex">
+<span id="hexadecimal-api-bd103-data-hex"></span><h1>Hexadecimal API (<a class="reference internal" href="#module-bd103.data.hex" title="bd103.data.hex"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data.hex</span></code></a>)<a class="headerlink" href="#module-bd103.data.hex" title="Permalink to this headline">¶</a></h1>
+<p>Provides methods and classes to translate various data types to and from the hex format.</p>
+<p>This module is heavily based off of other data format modules, like <a class="reference external" href="https://docs.python.org/3/library/json.html#module-json" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a> and <a class="reference external" href="https://docs.python.org/3/library/pickle.html#module-pickle" title="(in Python v3.10)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Hexadecimal">Hexadecimal on Wikipedia</a></p></li>
+</ul>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="bd103.data.hex.HexDecoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bd103.data.hex.</span></span><span class="sig-name descname"><span class="pre">HexDecoder</span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexDecoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexDecoder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bd103.data.hex.</span></span><span class="sig-name descname"><span class="pre">HexEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">return_uppercase</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_zero</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prefix_str_encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">truth_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">255</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_str_encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ascii'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_encode_error_handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'strict'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">string_decode_error_handler</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'strict'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to turn data into a string of hexadecimals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>return_uppercase</strong> – Whether letters in returned hex should be capitalized.</p></li>
+<li><p><strong>prefix_zero</strong> – If the returned value if only 1 character long, it will prefix the returned value with a <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p><strong>prefix_str_encoding</strong> – If true, all encoded strings will be prefixed with the encoding of the text.</p></li>
+<li><p><strong>truth_value</strong> – When given a boolean, it will translate the value to a number. Default or 15, or <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p></li>
+<li><p><strong>default_str_encoding</strong> – The encoding that should be preferred when encoding strings.</p></li>
+<li><p><strong>string_encode_error_handler</strong> – How to treat errors when formatting a string in <a class="reference internal" href="#bd103.data.hex.HexEncoder.encode_str" title="bd103.data.hex.HexEncoder.encode_str"><code class="xref py py-meth docutils literal notranslate"><span class="pre">encode_str()</span></code></a>.</p></li>
+<li><p><strong>string_decode_error_handler</strong> – How to treat errors when converting bytes to string in <a class="reference internal" href="#bd103.data.hex.HexEncoder.encode_str" title="bd103.data.hex.HexEncoder.encode_str"><code class="xref py py-meth docutils literal notranslate"><span class="pre">encode_str()</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/codecs.html#error-handlers">Encode / Decode error handlers</a></p></li>
+</ul>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.default_str_encoding">
+<span class="sig-name descname"><span class="pre">default_str_encoding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.default_str_encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.encode_bool">
+<span class="sig-name descname"><span class="pre">encode_bool</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder.encode_bool"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder.encode_bool" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.encode_int">
+<span class="sig-name descname"><span class="pre">encode_int</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder.encode_int"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder.encode_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.encode_list">
+<span class="sig-name descname"><span class="pre">encode_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><span class="pre">typing.Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder.encode_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder.encode_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encodes a list of data through <a class="reference internal" href="#bd103.data.hex.HexEncoder.smart_encode" title="bd103.data.hex.HexEncoder.smart_encode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">smart_encode()</span></code></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Encoded strings and lists have the same data type.
+When decoding a list, make sure you configure <a class="reference internal" href="#bd103.data.hex.HexDecoder" title="bd103.data.hex.HexDecoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">HexDecoder</span></code></a> to prefer the list or string type.
+This may cause weird errors in your code, so it is recommended to only encode simple data types.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.encode_str">
+<span class="sig-name descname"><span class="pre">encode_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">str_encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder.encode_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder.encode_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.i_encode_str">
+<span class="sig-name descname"><span class="pre">i_encode_str</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">str_encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Iterable" title="(in Python v3.10)"><span class="pre">collections.abc.Iterable</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder.i_encode_str"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder.i_encode_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.prefix_str_encoding">
+<span class="sig-name descname"><span class="pre">prefix_str_encoding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.prefix_str_encoding" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.prefix_zero">
+<span class="sig-name descname"><span class="pre">prefix_zero</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.prefix_zero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.return_uppercase">
+<span class="sig-name descname"><span class="pre">return_uppercase</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.return_uppercase" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.smart_encode">
+<span class="sig-name descname"><span class="pre">smart_encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#HexEncoder.smart_encode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.HexEncoder.smart_encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.string_decode_error_handler">
+<span class="sig-name descname"><span class="pre">string_decode_error_handler</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.string_decode_error_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.string_encode_error_handler">
+<span class="sig-name descname"><span class="pre">string_encode_error_handler</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.string_encode_error_handler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bd103.data.hex.HexEncoder.truth_value">
+<span class="sig-name descname"><span class="pre">truth_value</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a></em><a class="headerlink" href="#bd103.data.hex.HexEncoder.truth_value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bd103.data.hex.dumps">
+<span class="sig-prename descclassname"><span class="pre">bd103.data.hex.</span></span><span class="sig-name descname"><span class="pre">dumps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../_modules/bd103/data/hex.html#dumps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.dumps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts an integer or list of integers into a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>o</strong> – An integer or list of integers to be encoded.</p></li>
+<li><p><strong>**kwargs</strong> – Arguments to be passed on initialization of a new instance of <a class="reference internal" href="#bd103.data.hex.HexEncoder" title="bd103.data.hex.HexEncoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">HexEncoder</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bd103.data.hex.loads">
+<span class="sig-prename descclassname"><span class="pre">bd103.data.hex.</span></span><span class="sig-name descname"><span class="pre">loads</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">o</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bd103/data/hex.html#loads"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bd103.data.hex.loads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a hexadecimal string to an integer or list of integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>o</strong> – A hexadecimal string to be decoded.</p></li>
+<li><p><strong>**kwargs</strong> – Arguments to be passed on initialization of a new instance of <a class="reference internal" href="#bd103.data.hex.HexDecoder" title="bd103.data.hex.HexDecoder"><code class="xref py py-class docutils literal notranslate"><span class="pre">HexDecoder</span></code></a>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="data.html"
+                        title="previous chapter">Data APIs (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data</span></code>)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../ext/ext.html"
+                        title="next chapter">Extension APIs (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.ext</span></code>)</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/api/data/hex.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../ext/ext.html" title="Extension APIs (bd103.ext)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="data.html" title="Data APIs (bd103.data)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">BD103-Python 2.0.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../api.html" >BD103 API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103</span></code>)</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="data.html" >Data APIs (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data</span></code>)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Hexadecimal API (<code class="xref py py-mod docutils literal notranslate"><span class="pre">bd103.data.hex</span></code>)</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 1980, BD103.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.3.2.
+    </div>
+  </body>
+</html>
