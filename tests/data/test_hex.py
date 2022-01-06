@@ -1,6 +1,8 @@
-from bd103.data import hex
+import pytest
+# from bd103.data import hex
 
 
+@pytest.mark.skip(reason="No hex module for now")
 class TestHexEncoder(object):
     def test_defaults(self):
         encoder = hex.HexEncoder()
